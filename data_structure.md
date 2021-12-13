@@ -437,3 +437,191 @@ int main(){
     return 0;
 }
 ```
+
+### 树
+
+#### 先序遍历创建树并使用中序遍历访问
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define OK 1
+#define ERROR 0
+typedef int Status;
+typedef char TElemType;
+
+typedef struct BiNode{
+    TElemType data;
+    struct BiNode *lChild, *rChild;
+}BiNode, *BiTree;
+
+// 先序遍历的顺序建立二叉链表
+Status createBiTree(BiTree &T){
+    TElemType ch;
+    cin >> ch;
+    // 空树
+    if (ch == '#')  T = NULL;
+    else{
+        T = new BiNode;
+        T->data = ch;
+        createBiTree(T->lChild);
+        createBiTree(T->rChild);
+    }
+    return OK;
+}
+// 中序遍历二叉树
+Status inOrderTraverse(BiTree T){
+    if (T){
+        inOrderTraverse(T->lChild);
+        cout << T->data << " ";
+        inOrderTraverse(T->rChild);
+    }
+    return OK;
+}
+int main(){
+    BiTree T;
+    // ABC##DE#G##F###
+    createBiTree(T);
+    // C B E G D F A
+    inOrderTraverse(T);
+    return 0;
+}
+```
+
+### 图
+
+#### 邻接矩阵创建无向图
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+#define NUM 100
+#define OK 1
+#define ERROR 0
+// 点
+typedef int VerTextType;
+// 边的权重
+typedef int ArcType;
+
+typedef struct{
+    // 点的集合
+    VerTextType vexs[NUM];
+    // 邻接矩阵
+    ArcType arcs[NUM][NUM];
+    // 点的数量 边的数量
+    int vexNum, arcNum;
+}AMGraph;
+// 确定点 v 在 G 中的位置
+int locateVex(AMGraph G, VerTextType v){
+    for (int i = 0; i < G.vexNum; i ++){
+        if (G.vexs[i] == v) return i;
+    }
+    return -1;
+}
+// 创建无向图
+int createUDN(AMGraph &G){
+    cin >> G.vexNum >> G.arcNum;
+    for (int i = 0; i < G.vexNum; i ++){
+        G.vexs[i] = i;
+    }
+    memset(G.arcs, 0, sizeof G.arcs);
+    for(int i = 0; i < G.arcNum; i ++){
+        VerTextType v1, v2;
+        ArcType w = 1;
+        cin >> v1 >> v2;
+        int x = locateVex(G, v1);
+        int y = locateVex(G, v2);
+        G.arcs[x][y] = G.arcs[y][x] = w;
+    }
+    return OK;
+}
+int main(){
+    AMGraph G;
+    /*
+     * 3 3
+     * 0 1
+     * 1 2
+     * 0 2
+     */
+    createUDN(G);
+    for (int i = 0; i < G.vexNum; i ++){
+        for (int j = 0; j < G.vexNum; j ++){
+            cout << G.arcs[i][j] << " ";
+        }
+        cout << endl;
+    }
+    /*
+     * 0 1 1
+     * 1 0 1
+     * 1 1 0
+     */
+}
+```
+
+#### 邻接表创建无向图
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define MVNum 100
+#define OK 1
+
+// 点
+typedef int VerTexType;
+
+typedef struct ArcNode{
+    // 边所指向的顶点位置
+    int adjvex;
+    // 指向下一条边的指针
+    struct ArcNode *nextarc;
+}ArcNode;
+
+typedef struct Vnode{
+    // 顶点信息
+    VerTexType data;
+    // 指向第一条依附该顶点的边的指针
+    ArcNode *firstarc;
+}Vnode, AdjList[MVNum];
+
+typedef struct{
+    AdjList vertices;
+    int vexnum, arcnum;
+}ALGraph;
+// 确定点 v 在 G 中的位置
+int locateVex(ALGraph G, VerTexType v){
+    for (int i = 0; i < G.vexnum; i ++){
+        if (G.vertices[i].data == v)    return i;
+    }
+    return -1;
+}
+
+int createUDG(ALGraph &G){
+    cin >> G.vexnum >> G.arcnum;
+    for (int i = 0; i < G.vexnum; i ++){
+        cin >> G.vertices[i].data;
+        G.vertices[i].firstarc = NULL;
+    }
+
+    for (int i = 0; i < G.arcnum; i ++){
+        VerTexType v1, v2;
+        cin >> v1 >> v2;
+        int x = locateVex(G, v1);
+        int y = locateVex(G, v2);
+
+        ArcNode *p = new ArcNode;
+        p->adjvex = x;
+        p->nextarc = G.vertices[y].firstarc;
+        G.vertices[y].firstarc = p;
+
+        ArcNode *q = new ArcNode;
+        q->adjvex = y;
+        q->nextarc = G.vertices[x].firstarc;
+        G.vertices[x].firstarc = q;
+
+        return OK;
+    }
+}
+```
