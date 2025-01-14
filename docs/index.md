@@ -4,8 +4,7 @@ layout: home
 
 hero:
   name: "随意记"
-  text: "记录开发时遇到的问题"
-  tagline: 如果在意失误，人就会不自觉间畏缩
+  tagline: 如果在意失误 人就会不自觉间畏缩
   image:
     src: /logo.gif
     alt: VitePress

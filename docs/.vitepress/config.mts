@@ -22,6 +22,14 @@ export default defineConfig({
           { text: 'C++函数', link: '/school/cpp_function' },
           { text: '数据结构', link: '/school/data_structure' }
         ]
+      },
+      {
+        text: '杂项',
+        // 初始加载时,侧边栏关闭
+        collapsed: true,
+        items: [
+          { text: '常用软件记录', link: '/sundry/software' }
+        ]
       }
     ],
 
