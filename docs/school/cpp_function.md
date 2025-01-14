@@ -1,6 +1,6 @@
 # C++ 
 
-### 一、sort函数
+### sort函数
 
 1. sort 是调用标准库中的排序方法对数组实现排序
 2. 参数**void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);**

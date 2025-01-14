@@ -54,6 +54,8 @@ export default defineConfig({
     // 开启本地搜索
     search: {
       provider: 'local'
-    }
+    },
+
+    outline: [2,4]
   }
 })
