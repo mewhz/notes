@@ -14,13 +14,19 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: '期末',
+        text: '中间件',
         // 初始加载时,侧边栏关闭
         collapsed: true,
         items: [
-          { text: 'Java简答题', link: '/school/java_question' },
-          { text: 'C++函数', link: '/school/cpp_function' },
-          { text: '数据结构', link: '/school/data_structure' }
+          { text: 'Redis', link: '/middleware/redis' }
+        ]
+      },
+      {
+        text: '云原生',
+        // 初始加载时,侧边栏关闭
+        collapsed: true,
+        items: [
+          { text: 'Docker', link: '/container/docker' }
         ]
       },
       {
@@ -29,6 +35,16 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: '常用软件记录', link: '/sundry/software' }
+        ]
+      },
+      {
+        text: '期末',
+        // 初始加载时,侧边栏关闭
+        collapsed: true,
+        items: [
+          { text: 'Java简答题', link: '/school/java_question' },
+          { text: 'C++函数', link: '/school/cpp_function' },
+          { text: '数据结构', link: '/school/data_structure' }
         ]
       }
     ],
