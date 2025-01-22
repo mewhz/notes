@@ -72,6 +72,7 @@ export default defineConfig({
       provider: 'local'
     },
 
-    outline: [2,4]
+    outline: [2,5]
+    // 设置展示的标题等级范围
   }
 })
