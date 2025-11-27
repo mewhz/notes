@@ -72,7 +72,7 @@
 | :----------------------------------------------------------: | :---------------------------: |
 |                [ApiFox](https://apifox.com/)                 |          API调试工具          |
 |        [Burp Suite](https://portswigger.net/burp/pro)        |      集成化渗透测试工具       |
-|    [Dev-C++](https://sourceforge.net/p/devcpp/home/Home/)    |    轻量级开发 C/C++ 的 IDE    |
+|    [Dev-C++](https://sourceforge.net/projects/devcpp/)    |    轻量级开发 C/C++ 的 IDE    |
 |            [Dolphin](https://cn.dolphin-emu.org/)            |     任天堂主机 Wii 模拟器     |
 | [exe4j](https://www.ej-technologies.com/download/exe4j/files) |    把 jar 制作成 exe 文件     |
 |    [PhpStorm](https://www.jetbrains.com/zh-cn/phpstorm/)     |        开发 PHP 的 IDE        |
